@@ -7,7 +7,7 @@
 
     if ($conteudo === false){
         http_response_code(500);
-        echo json_encode(["erro => Arquivo 'dados_cliente.json' não localizado."]);
+        echo json_encode(["erro => Arquivo '$arquivo' não localizado."]);
         exit;
     }
 
@@ -15,7 +15,7 @@
 
     if (json_last_error() !== JSON_ERROR_NONE){
         http_response_code(500);
-        echo json_encode(['Erro => formato JSON inválido']);
+        echo json_encode(["Erro => formato JSON inválido do arquivo '$arquivo'"]);
         exit;
     }
 
@@ -35,7 +35,7 @@
                 $resultado[] = $cliente;
             }
         }
-    } else if ($idade !== null){
+    } else if ($idade !== null && $idade > 0){
         $idade = (int)$idade;
         foreach ($clientes as $cliente){
             if ($cliente['idade'] == $idade){
@@ -57,13 +57,10 @@
             }
         }
     } else {
-        echo "Parâmetro de Informação não localizada. Segue a lista completa...\n\n";
-        foreach ($clientes as $cliente){
-            echo "Nome:".$cliente['nome']."\n";
-            echo "Idade: ".$cliente['idade']."\n";
-            echo "Profissão:".$cliente['profissao']."\n";
-            echo "Cidade: ".$cliente['cidade']."\n";
-            echo "\n";
+        if (!$nome && !$idade && !$profissao && !$cidade){
+            $resultado = $clientes;
+        } else {
+            echo "Parâmetro de Informação não localizada. Segue a lista completa...\n\n";
         }
     }
     echo json_encode($resultado, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
