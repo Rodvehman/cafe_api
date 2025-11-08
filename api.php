@@ -40,7 +40,6 @@
         foreach ($clientes as $cliente){
             if ($cliente['idade'] == $idade){
                 $resultado[] = $cliente;
-                break;
             }
         }
     } else if ($profissao !== null){
