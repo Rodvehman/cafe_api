@@ -1,0 +1,22 @@
+{
+    "clientes" : [
+    {
+        "nome" : "João",
+        "idade" : 50,
+        "profissao" : "bancário",
+        "cidade" : "São Paulo"
+    },
+    {
+        "nome" : "Pedro",
+        "idade" : 20,
+        "profissao" : "estagiário",
+        "cidade" : "São Paulo"
+    },
+    {
+        "nome" : "Gilson",
+        "idade" : 67,
+        "profissao" : "aposentado",
+        "cidade" : "Biriguí"
+    }
+    ]
+}
